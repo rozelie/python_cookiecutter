@@ -23,8 +23,8 @@ test:
 	PYTHONPATH="${ROOT_DIR}" PYTHONUNBUFFERED=1 ${PYTHON} -m pytest ${TESTS_DIR}
 
 format:
-	${VENV_BIN}/black ${SRC_DIR}
-	${VENV_BIN}/isort ${SRC_DIR}
+	${VENV_BIN}/black ${SRC_DIR} ${TESTS_DIR}
+	${VENV_BIN}/isort ${SRC_DIR} ${TESTS_DIR}
 
 lint:
 	${VENV_BIN}/ruff ${SRC_DIR}

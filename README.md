@@ -1,4 +1,19 @@
 # Python Project Cookiecutter
+My personal Python project cookiecutter template tailored to my own preferences.
+
+# Features
+- Python 3.11
+- `Makefile`
+    - `make setup`: install the module and dev dependencies
+    - `make run`: execute the module
+    - `make test`: run `pytest` on the `tests` dir
+    - `make format`: run `black` and `isort` on source and `tests` dirs
+    - `make lint`: run `ruff` and `mypy` on source files
+- `.pyproject.toml`
+  - up-to-date, pinned dev dependencies
+  - linting and formatter tool configs
+- MIT license
+- Python-specific .gitignore
 
 # Usage
 ```bash
@@ -7,7 +22,7 @@ cookiecutter https://github.com/rozelie/Python-Project-Cookiecutter
 make setup
 ```
 
-# Testing
+# Local Testing
 ```bash
 make test
 ```
