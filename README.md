@@ -13,7 +13,7 @@ My personal Python project cookiecutter template tailored to my own preferences.
   - up-to-date, pinned dev dependencies
   - linting and formatter tool configs
 - MIT license
-- Python-specific .gitignore
+- Python-specific `.gitignore`
 
 # Usage
 ```bash
