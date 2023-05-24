@@ -30,3 +30,7 @@ make test
 # Resources
 - [The Basics of Python Packaging in Early 2023](https://drivendata.co/blog/python-packaging-2023)
 - [Cookiecutter Docs](https://cookiecutter.readthedocs.io/en/1.7.2/index.html)
+
+# Todo
+- PyPi register/upload functionality
+- GitHub actions
