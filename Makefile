@@ -8,6 +8,7 @@ test:
 		make setup; \
 		make format; \
 		make lint; \
+		make test; \
 		make run;
 	rm -rf ${TEST_PROJECT_NAME}
 	echo "No issues in creating the new project"
