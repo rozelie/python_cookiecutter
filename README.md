@@ -9,7 +9,7 @@ My personal Python project cookiecutter template tailored to my own preferences.
     - `make test`: run `pytest` on the `tests` dir
     - `make format`: run `black` and `isort` on source and `tests` dirs
     - `make lint`: run `ruff` and `mypy` on source files
-- `.pyproject.toml`
+- `pyproject.toml`
   - up-to-date, pinned dev dependencies
   - linting and formatter tool configs
 - MIT license
