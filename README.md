@@ -34,3 +34,4 @@ make test
 # Todo
 - PyPi register/upload functionality
 - GitHub actions
+- Dockerfile with Makefile targets
