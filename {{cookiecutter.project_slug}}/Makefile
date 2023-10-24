@@ -4,6 +4,7 @@ TESTS_DIR := ${ROOT_DIR}/tests
 VENV_BIN := ${ROOT_DIR}/venv/bin
 PYTHON := ${VENV_BIN}/python
 ENTRYPOINT := ${SRC_DIR}/__main__.py
+DOCKER_IMAGE := {{cookiecutter.project_slug}}:local
 
 install:
 	${PYTHON} -m pip install .
@@ -29,3 +30,9 @@ format:
 lint:
 	${VENV_BIN}/ruff ${SRC_DIR}
 	${VENV_BIN}/mypy ${SRC_DIR}
+
+docker_build:
+	docker build -t ${DOCKER_IMAGE} .
+
+docker_run:
+	docker run -it --rm ${DOCKER_IMAGE}

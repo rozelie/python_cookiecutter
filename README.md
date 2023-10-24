@@ -9,6 +9,8 @@ My personal Python project cookiecutter template tailored to my own preferences.
     - `make test`: run `pytest` on the `tests` dir
     - `make format`: run `black` and `isort` on source and `tests` dirs
     - `make lint`: run `ruff` and `mypy` on source files
+    - `make docker_build`: build Dockerfile
+    - `make docker_run`: execute the module within a docker container
 - `pyproject.toml`
   - up-to-date, pinned dev dependencies
   - linting and formatter tool configs
@@ -33,4 +35,4 @@ make test
 
 # Todo
 - PyPi register/upload functionality
-- Dockerfile with Makefile targets
+- Add Dockerfile.dev functionality
