@@ -3,14 +3,19 @@ My personal Python project cookiecutter template tailored to my own preferences.
 
 # Features
 - Python 3.11
-- `Makefile`
-    - `make setup`: install the module and dev dependencies
-    - `make run`: execute the module
-    - `make test`: run `pytest` on the `tests` dir
-    - `make format`: run `black` and `isort` on source and `tests` dirs
-    - `make lint`: run `ruff` and `mypy` on source files
-    - `make docker_build`: build Dockerfile
-    - `make docker_run`: execute the module within a docker container
+- `Makefile` targets:
+```
+help: Show this help.
+setup: Install the package and dev dependencies into a virtualenv.
+run:  Run the package.
+test:  Run pytest on the tests dir.
+format: Run black and isort on package and tests dirs.
+lint:  Run ruff and mypy on package files.
+docker_build: Build a Docker image for the package.
+docker_run:  Run the Docker image for the package.
+publish_to_testpypi:  Publish the package to test.pypi.org.
+publish_to_pypi:  Publish the package to pypi.org.
+```
 - `pyproject.toml`
   - up-to-date, pinned dev dependencies
   - linting and formatter tool configs
@@ -35,3 +40,10 @@ make test
 
 # Todo
 - Add Dockerfile.dev functionality
+- Add logging.ini or similar
+- Add optional functionality:
+  - SQLAlchemy, Postgres integration
+  - docker compose file
+  - FastAPI, domain-based
+  - Alembic
+    - Add target to create a new alembic revision (if using alembic)
