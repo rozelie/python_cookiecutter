@@ -1,9 +1,15 @@
+ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+VENV_BIN := ${ROOT_DIR}/venv/bin
+PYTHON := ${VENV_BIN}/python
 TEST_PROJECT_NAME := "new_project"
+
+setup:
+	python3 -m venv venv
+	${PYTHON} -m pip install cookiecutter --upgrade
 
 test:
 	rm -rf ${TEST_PROJECT_NAME}
-	pip install -U cookiecutter --upgrade
-	cookiecutter . --no-input
+	${VENV_BIN}/cookiecutter . --no-input
 	cd ${TEST_PROJECT_NAME}; \
 		make setup; \
 		make format; \
