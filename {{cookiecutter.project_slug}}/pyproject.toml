@@ -34,6 +34,27 @@ dev = [
 "Homepage" = "{{ cookiecutter.homepage_url}}"
 
 [tool.ruff]
+# Rules: https://docs.astral.sh/ruff/rules/
+select = [
+    "D", # pydocstyle
+    "I", # isort
+    "UP", # pyupgrade
+    "C4", # flake8-comprehensions
+    "ISC", # flake8-implicit-str-concat
+    "T20", # flake8-print
+    "PT", # flake8-pytest-style
+    "SIM", # flake8-simplify
+    "PTH", # flake8-use-pathlib
+    "ERA", # eradicate
+    "PL", # Pylint
+    "TRY", # tryceratops
+    "RUF", # Ruff-specific rules
+]
+ignore = [
+    "D107", # Missing docstring in `__init__`
+    "D203", # one-blank-line-before-class
+    "D213", # multi-line-summary-second-line
+]
 line-length = 120
 target-version = "py311"
 
