@@ -36,3 +36,17 @@ docker_build:
 
 docker_run:
 	docker run -it --rm ${DOCKER_IMAGE}
+
+publish_to_testpypi:
+	# register account at https://test.pypi.org/account/register/
+	${PYTHON} -m pip install --upgrade build twine
+	${PYTHON} -m build
+	${PYTHON} -m twine upload --repository testpypi dist/*
+	rm -rf dist
+
+publish_to_pypi:
+	# register account at https://pypi.org/account/register/
+	${PYTHON} -m pip install --upgrade build twine
+	${PYTHON} -m build
+	${PYTHON} -m twine upload --repository pypi dist/*
+	rm -rf dist

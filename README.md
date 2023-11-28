@@ -34,5 +34,4 @@ make test
 - [Cookiecutter Docs](https://cookiecutter.readthedocs.io/en/1.7.2/index.html)
 
 # Todo
-- PyPi register/upload functionality
 - Add Dockerfile.dev functionality
