@@ -5,25 +5,34 @@ src_dir := root_dir / "{{cookiecutter.project_slug}}"
 tests_dir := root_dir / "tests"
 venv_bin := root_dir / "venv" / "bin"
 python := venv_bin / "python"
+pip := venv_bin / "pip"
 entrypoint := src_dir / "__main__.py"
 docker_image := "{{cookiecutter.project_slug}}:local"
 
 {% raw -%}
+# export environment variables for all recipies
+export PYTHONUNBUFFERED := "1" # ensure stdout and stderr are not buffered
+export PYTHONPATH := root_dir
+
+# -- OPTIONAL SETTINGS --
+# set dotenv-load          # load '.env' values
+# set positional-arguments # allow positional arguments
+
 default: format lint test
 
 # Install the package and dev dependencies into a virtualenv.
 setup:
 	python3 -m venv venv
-	{{python}} -m pip install .
-	{{python}} -m pip install .[dev]
+	{{pip}} install .
+	{{pip}} install .[dev]
 
 # Run the package.
 run:
-	PYTHONPATH="{{root_dir}}" PYTHONUNBUFFERED=1 {{python}} {{entrypoint}}
+	{{python}} {{entrypoint}}
 
 # Run pytest on the tests dir.
 test:
-	PYTHONPATH="{{root_dir}}" PYTHONUNBUFFERED=1 {{python}} -m pytest {{tests_dir}}
+	{{python}} -m pytest {{tests_dir}}
 
 # Run black and isort on package and tests dirs.
 format:
@@ -46,7 +55,7 @@ docker_run:
 # Publish the package to test.pypi.org.
 publish_to_testpypi:
 	# register account at https://test.pypi.org/account/register/
-	{{python}} -m pip install --upgrade build twine
+	{{pip}} install --upgrade build twine
 	{{python}} -m build
 	{{python}} -m twine upload --repository testpypi dist/*
 	rm -rf dist
@@ -54,7 +63,7 @@ publish_to_testpypi:
 # Publish the package to pypi.org.
 publish_to_pypi:
 	# register account at https://pypi.org/account/register/
-	{{python}} -m pip install --upgrade build twine
+	{{pip}} install --upgrade build twine
 	{{python}} -m build
 	{{python}} -m twine upload --repository pypi dist/*
 	rm -rf dist
