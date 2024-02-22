@@ -21,13 +21,13 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# up-to-date dependencies as of 11/28/2023
+# up-to-date dependencies as of 2/21/24
 dev = [
-  "pytest==7.4.3",
-  "black==23.11.0",
-  "isort==5.12.0",
-  "mypy==1.7.1",
-  "ruff==0.1.6",
+  "pytest==8.0.1",
+  "black==24.2.0",
+  "isort==5.13.2",
+  "mypy==1.8.0",
+  "ruff==0.2.2",
 ]
 
 [project.urls]
