@@ -24,8 +24,13 @@ export PYTHONPATH := root_dir
 # set positional-arguments     # allow positional arguments
 # home_dir := env_var('HOME')  # load an environment variable
 
+# list available recipes
 default:
-    just --list
+    @just --list
+
+# evaluate and print all just variables
+eval:
+    @just --evaluate
 
 # Install the package and dev dependencies into a virtualenv.
 setup:
