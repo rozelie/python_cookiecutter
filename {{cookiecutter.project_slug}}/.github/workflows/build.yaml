@@ -7,17 +7,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+
     - name: Set up Python
       uses: actions/setup-python@v3.1.2
       with:
         python-version: 3.11
+    
+    - name: Install just
+      run: sudo snap install --edge --classic just
 
     - name: Install module in venv
-      run: make setup
+      run: just setup
 
     - name: Run tests
-      run: make test
+      run: just test
 
     - name: Run linters
-      run: make lint
+      run: just lint

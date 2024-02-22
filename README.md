@@ -31,7 +31,7 @@ make setup
 
 # Local Testing
 ```bash
-make test
+just test
 ```
 
 # Resources
