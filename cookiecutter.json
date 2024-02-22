@@ -1,6 +1,6 @@
 {
   "project_slug": "new_project",
-  "project_description": "My new project",
+  "project_description": "My new project.",
   "author_name": "Ryan Ozelie",
   "author_email": "ryan.ozelie@gmail.com",
   "homepage_url": "https://github.com/rozelie/{{cookiecutter.project_slug}}"
