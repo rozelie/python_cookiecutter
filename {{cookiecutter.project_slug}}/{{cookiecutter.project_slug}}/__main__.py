@@ -1,5 +1,6 @@
 """{{ cookiecutter.project_description }}"""
 
+
 def main() -> None:
     """Project entrypoint."""
 

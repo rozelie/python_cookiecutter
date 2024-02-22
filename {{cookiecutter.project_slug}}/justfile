@@ -1,5 +1,6 @@
 set shell := ["sh", "-c"]
 
+# global variables
 root_dir := justfile_directory()
 src_dir := root_dir / "{{cookiecutter.project_slug}}"
 tests_dir := root_dir / "tests"
@@ -9,16 +10,22 @@ pip := venv_bin / "pip"
 entrypoint := src_dir / "__main__.py"
 docker_image := "{{cookiecutter.project_slug}}:local"
 
+# aliases
+alias dbuild := docker_build
+alias drun := docker_run
+
 {% raw -%}
 # export environment variables for all recipies
 export PYTHONUNBUFFERED := "1" # ensure stdout and stderr are not buffered
 export PYTHONPATH := root_dir
 
-# -- OPTIONAL SETTINGS --
-# set dotenv-load          # load '.env' values
-# set positional-arguments # allow positional arguments
+# optional settings and variables
+# set dotenv-load              # load '.env' values
+# set positional-arguments     # allow positional arguments
+# home_dir := env_var('HOME')  # load an environment variable
 
-default: format lint test
+default:
+    just --list
 
 # Install the package and dev dependencies into a virtualenv.
 setup:
@@ -26,34 +33,36 @@ setup:
 	{{pip}} install .
 	{{pip}} install .[dev]
 
-# Run the package.
+# Run the package locally.
 run:
-	{{python}} {{entrypoint}}
-
-# Run pytest on the tests dir.
-test:
-	{{python}} -m pytest {{tests_dir}}
+    {{python}} {{entrypoint}}
 
 # Run black and isort on package and tests dirs.
 format:
 	{{venv_bin}}/black {{src_dir}} {{tests_dir}}
 	{{venv_bin}}/isort {{src_dir}} {{tests_dir}}
 
-# Run ruff and mypy on package files.
+# Run pytest on the tests dir.
+test:
+	{{python}} -m pytest {{tests_dir}}
+
+# Lint formatting, run ruff and mypy on package files.
 lint:
-	{{venv_bin}}/ruff {{src_dir}}
+	{{venv_bin}}/black --check {{src_dir}} {{tests_dir}}
+	{{venv_bin}}/isort --check {{src_dir}} {{tests_dir}}
+	{{venv_bin}}/ruff check {{src_dir}}
 	{{venv_bin}}/mypy {{src_dir}}
 
 # Build a Docker image for the package.
 docker_build:
 	docker build -t {{docker_image}} .
 
-# Run the Docker image for the package.
-docker_run:
-	docker run -it --rm {{docker_image}}
+# Run a Docker container for the package.
+docker_run: docker_build
+    docker run -it --rm {{docker_image}}
 
 # Publish the package to test.pypi.org.
-publish_to_testpypi:
+publish_to_testpypi: format lint test
 	# register account at https://test.pypi.org/account/register/
 	{{pip}} install --upgrade build twine
 	{{python}} -m build
@@ -61,7 +70,8 @@ publish_to_testpypi:
 	rm -rf dist
 
 # Publish the package to pypi.org.
-publish_to_pypi:
+[confirm]
+publish_to_pypi: format lint test
 	# register account at https://pypi.org/account/register/
 	{{pip}} install --upgrade build twine
 	{{python}} -m build

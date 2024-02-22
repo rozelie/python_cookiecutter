@@ -20,8 +20,7 @@ test:
 		just format; \
 		just lint; \
 		just test; \
-		just docker_build; \
-		just docker_run; \
+		just drun; \
 		just run;
 	rm -rf {{test_project_name}}
 	echo "No issues in creating the new project"

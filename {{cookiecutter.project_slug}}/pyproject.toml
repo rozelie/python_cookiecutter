@@ -25,7 +25,7 @@ dependencies = [
 dev = [
   "pytest==8.0.1",
   "black==24.2.0",
-  "isort==5.13.2",
+  "isort[colors]==5.13.2",
   "mypy==1.8.0",
   "ruff==0.2.2",
 ]
