@@ -15,6 +15,8 @@ test:
 		make format; \
 		make lint; \
 		make test; \
+		make docker_build; \
+		make docker_run; \
 		make run;
 	rm -rf ${TEST_PROJECT_NAME}
 	echo "No issues in creating the new project"
