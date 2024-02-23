@@ -14,14 +14,11 @@ jobs:
       with:
         python-version: 3.11
     
-    - name: Install just
-      run: curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin
-
-    - name: Install module in venv
-      run: just setup
-
-    - name: Run tests
-      run: just test
+    - name: Setup the local environment
+      run: ./scripts/setup
 
     - name: Run linters
-      run: just lint
+      run: ./scripts/lint
+
+    - name: Run tests
+      run: ./scripts/test
