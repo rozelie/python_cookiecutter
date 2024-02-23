@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Setup the local environment.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+source scripts/_global
+
+echo_step "Creating virtual env"
+python3 -m venv venv
+activate_venv
+
+echo_step "Installing the package and dev requirements"
+pip install .[dev]

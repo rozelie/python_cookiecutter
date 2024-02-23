@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Run a docker container for the app.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+source scripts/_global
+activate_venv
+
+scripts/docker_build
+
+echo_step "Running docker container '${DOCKER_IMAGE_TAG}'"
+docker run -it --rm "$DOCKER_IMAGE_TAG"

@@ -3,19 +3,7 @@ My personal Python project cookiecutter template tailored to my own preferences.
 
 # Features
 - Python 3.11
-- `Makefile` targets:
-```
-help: Show this help.
-setup: Install the package and dev dependencies into a virtualenv.
-run:  Run the package.
-test:  Run pytest on the tests dir.
-format: Run black and isort on package and tests dirs.
-lint:  Run ruff and mypy on package files.
-docker_build: Build a Docker image for the package.
-docker_run:  Run the Docker image for the package.
-publish_to_testpypi:  Publish the package to test.pypi.org.
-publish_to_pypi:  Publish the package to pypi.org.
-```
+- robust scripts dir
 - `pyproject.toml`
   - up-to-date, pinned dev dependencies
   - linting and formatter tool configs
@@ -31,7 +19,8 @@ make setup
 
 # Local Testing
 ```bash
-just test
+./scripts/setup
+./scripts/test
 ```
 
 # Resources

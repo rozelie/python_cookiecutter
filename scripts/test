@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Create a test project to ensure it does not fail.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+test_project_name="new_project"
+
+rm -rf ${test_project_name} || true
+
+echo "==> Creating and testing temporary test project '${test_project_name}'…"
+venv/bin/cookiecutter . --no-input
+cd ${test_project_name}
+./scripts/setup
+./scripts/format
+./scripts/lint
+./scripts/test
+./scripts/run
+./scripts/docker_run
+
+echo "==> Removing '${test_project_name}'..."
+rm -rf ${test_project_name}}
+
+echo "==> Successfully created and tested a new project"

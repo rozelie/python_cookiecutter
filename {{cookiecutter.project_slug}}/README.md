@@ -7,27 +7,31 @@
 
 # Contributing
 
-## `just`
-`just` is a command runner to be used for local development and CI/CD.
+## Environment and Scripts
+```bash
+# Setup the local environment.
+./scripts/setup
 
-See [just documentation](https://just.systems/man/en/chapter_1.html) for install and usage info.
+# Run the app locally.
+./scripts/run
 
-```
-> just
-Available recipes:
-    default             # list available recipes
-    docker_build        # Build a Docker image for the package.
-    dbuild              # alias for `docker_build`
-    docker_run          # Run a Docker container for the package.
-    drun                # alias for `docker_run`
-    eval                # evaluate and print all just variables
-    format              # Run black and isort on package and tests dirs.
-    lint                # Lint formatting, run ruff and mypy on package files.
-    publish_to_pypi     # Publish the package to pypi.org.
-    publish_to_testpypi # Publish the package to test.pypi.org.
-    run                 # Run the package locally.
-    setup               # Install the package and dev dependencies into a virtualenv.
-    test                # Run pytest on the tests dir.
+# Format source code.
+./scripts/format
+
+# Lint source code.
+./scripts/lint
+
+# Run tests.
+./scripts/test
+
+# Build a docker image for the app.
+./scripts/docker_build
+
+# Run a docker container for the app.
+./scripts/docker_run
+
+# Publish the package to pypi.org.
+./scripts/publish_to_pypi
 ```
 
 # Credits

@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Execute tests.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+source scripts/_global
+activate_venv
+
+echo_step "Running tests"
+pytest ${TESTS_DIR}

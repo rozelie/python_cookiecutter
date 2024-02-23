@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Setup the local environment.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+echo "==> Creating virtual env…"
+python3 -m venv venv
+
+echo "==> Installing cookiecutter…"
+venv/bin/python -m pip install cookiecutter --upgrade

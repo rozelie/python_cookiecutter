@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Run the app locally.
+
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+source scripts/_global
+activate_venv
+
+echo_step "Running application locally"
+python -m "${PROJECT_NAME}"
