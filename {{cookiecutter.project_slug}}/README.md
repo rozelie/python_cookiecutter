@@ -35,4 +35,4 @@
 ```
 
 # Credits
-- Project skeleton generated via `cookiecutter https://github.com/rozelie/Python-Project-Cookiecutter`
+- Project skeleton generated via `cookiecutter https://github.com/rozelie/python_cookiecutter`
