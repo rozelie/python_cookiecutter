@@ -1,4 +1,4 @@
-# Python Project Cookiecutter
+# Python Cookiecutter
 My personal Python project cookiecutter template tailored to my own preferences.
 
 # Features
@@ -21,7 +21,7 @@ My personal Python project cookiecutter template tailored to my own preferences.
 # Usage
 ```bash
 pip install cookiecutter
-cookiecutter https://github.com/rozelie/Python-Project-Cookiecutter
+cookiecutter https://github.com/rozelie/python_cookiecutter
 ```
 
 # Local Testing
