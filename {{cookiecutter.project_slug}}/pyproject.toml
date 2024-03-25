@@ -24,10 +24,9 @@ dependencies = [
 # up-to-date dependencies as of 2/21/24
 dev = [
   "pytest==8.0.1",
-  "black==24.2.0",
   "isort[colors]==5.13.2",
   "mypy==1.8.0",
-  "ruff==0.2.2",
+  "ruff==0.3.4",
 ]
 
 [project.urls]
@@ -58,27 +57,13 @@ ignore = [
     "D107", # Missing docstring in `__init__`
     "D203", # one-blank-line-before-class
     "D213", # multi-line-summary-second-line
+    "ISC001", # conflicts with ruff formatter
 ]
 
-[tool.black]
-line-length = 120
-target-version = ['py311']
-color = true
-exclude = '''
-/(
-    \.git
-    | \.hg
-    | \.mypy_cache
-    | \.tox
-    | \.venv
-    | _build
-    | buck-out
-    | build
-    | dist
-    | env
-    | venv
-)/
-'''
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
 
 [tool.isort]
 line_length = 120
