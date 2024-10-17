@@ -4,21 +4,23 @@
 
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
-
 test_project_name="new_project"
 
 rm -rf ${test_project_name} || true
 
+uv sync
+
 echo "==> Creating and testing temporary test project '${test_project_name}'…"
-venv/bin/cookiecutter . --no-input
+uvx cookiecutter . --no-input
+
 cd ${test_project_name}
-./scripts/setup
-./scripts/format
-./scripts/lint
-./scripts/test
-./scripts/run
-./scripts/docker_run
+make setup
+make format
+make lint
+make test
+make run
+make docker-build
+make docker-run
 
 echo "==> Removing '${test_project_name}'..."
 rm -rf ${test_project_name}}

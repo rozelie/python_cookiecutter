@@ -2,16 +2,9 @@
 My personal Python project cookiecutter template tailored to my own preferences.
 
 # Features
-- Python 3.11
-- feature-rich scripts dir
-  - `scripts/setup`: setup the local environment
-  - `scripts/run`: run the app locally
-  - `scripts/format`: format source code
-  - `scripts/lint`: lint source code
-  - `scripts/test`: run tests
-  - `scripts/docker_build`: build a docker image for the app
-  - `scripts/docker_run`: run a docker container for the app
-  - `scripts/publish_to_pypi`: publish the package to pypi.org
+- Python 3.12
+- uv
+- feature-rich Makefile
 - `pyproject.toml` based
 - Dockerized
 - Github Action to run CI
@@ -26,8 +19,8 @@ cookiecutter https://github.com/rozelie/python_cookiecutter
 
 # Local Testing
 ```bash
-./scripts/setup
-./scripts/test
+make setup
+make test
 ```
 
 # Resources
@@ -37,6 +30,7 @@ cookiecutter https://github.com/rozelie/python_cookiecutter
 # Todo
 - Add Dockerfile.dev functionality
 - Add logging.ini or similar
+- Use uv in Dockerfile
 - Add optional functionality:
   - SQLAlchemy, Postgres integration
   - docker compose file

@@ -1,4 +1,4 @@
-"""{{ cookiecutter.project_description }}"""
+"""My new project."""
 
 
 def main() -> None:
