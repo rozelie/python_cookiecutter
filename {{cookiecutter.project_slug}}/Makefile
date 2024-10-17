@@ -1,4 +1,6 @@
 # --- Globals
+ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+
 PROJECT_NAME := {{cookiecutter.project_slug}}
 
 SRC := $(PROJECT_NAME)
@@ -8,7 +10,7 @@ DOCKER_IMAGE_TAG := $(PROJECT_NAME):local
 
 # --- Environment Variables
 export PYTHONUNBUFFERED := 1
-export PYTHONPATH := $(SRC)
+export PYTHONPATH := $(ROOT_DIR)
 
 # --- Targets
 .PHONY: docker-build
