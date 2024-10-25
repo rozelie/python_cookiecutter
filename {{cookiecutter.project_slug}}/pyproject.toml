@@ -16,17 +16,20 @@ requires-python = ">=3.12"
 dependencies = [
 ]
 
+
 [project.optional-dependencies]
 # up-to-date dependencies as of 2/21/24
 dev = [
   "pytest==8.0.1",
-  "isort[colors]==5.13.2",
   "mypy==1.8.0",
-  "ruff==0.3.4",
 ]
 
 [project.scripts]
 {{ cookiecutter.project_slug }} = "{{ cookiecutter.project_slug }}.main:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
 
 [project.urls]
 "Homepage" = "{{ cookiecutter.homepage_url }}"
@@ -39,14 +42,25 @@ target-version = "py312"
 select = ["ALL"]
 ignore = [
     "COM812",
-    "ISC001",
+    "D100", 
+    "D101", 
+    "D103",
     "D211",
     "D203",
     "D213",
+    "ISC001",
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**/*.py" = ["INP001", "D100", "ANN201", "S101"]
+"tests/**/*.py" = [
+  "ANN001", 
+  "ANN201", 
+  "ANN401", 
+  "D104",
+  "INP001", 
+  "S101", 
+  "SLF001", 
+]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -55,26 +69,7 @@ docstring-code-format = true
 
 [tool.mypy]
 python_version = "3.12"
-pretty = true
-show_traceback = true
-color_output = true
 
-allow_redefinition = false
-check_untyped_defs = true
-disallow_any_generics = true
-disallow_incomplete_defs = true
+[[tool.mypy.overrides]]
+module = ["pytest", "pandas", "matplotlib.pyplot", "matplotlib", "streamlit", "matplotlib.ticker"]
 ignore_missing_imports = true
-implicit_reexport = false
-no_implicit_optional = true
-show_column_numbers = true
-show_error_codes = true
-show_error_context = true
-strict_equality = true
-strict_optional = true
-warn_no_return = true
-warn_redundant_casts = true
-warn_return_any = true
-warn_unreachable = true
-warn_unused_configs = true
-warn_unused_ignores = true
-disable_error_code = "attr-defined"
