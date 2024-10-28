@@ -18,10 +18,10 @@ dependencies = [
 
 
 [project.optional-dependencies]
-# up-to-date dependencies as of 2/21/24
 dev = [
   "pytest==8.0.1",
   "mypy==1.8.0",
+  "ruff==0.7.1",
 ]
 
 [project.scripts]
@@ -71,5 +71,5 @@ docstring-code-format = true
 python_version = "3.12"
 
 [[tool.mypy.overrides]]
-module = ["pytest", "pandas", "matplotlib.pyplot", "matplotlib", "streamlit", "matplotlib.ticker"]
+module = ["pytest"]
 ignore_missing_imports = true

@@ -8,30 +8,31 @@ My new project.
 # Contributing
 
 ## Environment and Scripts
+
 ```bash
 # Setup the local environment.
-./scripts/setup
+make setup
 
 # Run the app locally.
-./scripts/run
+make run
 
-# Format source code.
-./scripts/format
+# Format source code and tests.
+make format
 
-# Lint source code.
-./scripts/lint
+# Lint source code and tests.
+make lint
 
 # Run tests.
-./scripts/test
+make test
+
+# Convenience target to format, lint, and test.
+make validate
 
 # Build a docker image for the app.
-./scripts/docker_build
+make docker-build
 
 # Run a docker container for the app.
-./scripts/docker_run
-
-# Publish the package to pypi.org.
-./scripts/publish_to_pypi
+make docker-run
 ```
 
 # Credits

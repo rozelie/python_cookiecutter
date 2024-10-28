@@ -13,38 +13,35 @@ export PYTHONUNBUFFERED := 1
 export PYTHONPATH := $(ROOT_DIR)
 
 # --- Targets
-.PHONY: docker-build
-docker-build:
-	docker build -t $(DOCKER_IMAGE_TAG) -f Dockerfile .
-
-
-.PHONY: docker-run
-docker-run:
-	docker run -it --rm $(DOCKER_IMAGE_TAG)
-
-
-.PHONY: format
-format:
-	uvx ruff format $(SRC) $(TESTS)
-
-
-.PHONY: lint
-lint:
-	uvx ruff format --check $(SRC) $(TESTS)
-	uvx ruff check $(SRC) $(TESTS)
-	uvx mypy $(SRC) $(TESTS)
-
+.PHONY: setup
+setup:
+	uv sync --extra dev
 
 .PHONY: run
 run:
 	uv run python -m $(PROJECT_NAME)
 
+.PHONY: format
+format:
+	uv run ruff format $(SRC) $(TESTS)
 
-.PHONY: setup
-setup:
-	uv sync
-
+.PHONY: lint
+lint:
+	uv run ruff format --check $(SRC) $(TESTS)
+	uv run ruff check $(SRC) $(TESTS)
+	uv run mypy $(SRC) $(TESTS)
 
 .PHONY: test
 test:
-	uvx pytest ${TESTS}
+	uv run pytest ${TESTS}
+
+.PHONY: test
+validate: format lint test
+
+.PHONY: docker-build
+docker-build:
+	docker build -t $(DOCKER_IMAGE_TAG) -f Dockerfile .
+
+.PHONY: docker-run
+docker-run:
+	docker run -it --rm $(DOCKER_IMAGE_TAG)
